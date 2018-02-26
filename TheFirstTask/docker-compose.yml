@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+  server:
+    build: ./server
+    networks:
+     - net        
+
+  client:
+    build: ./client
+    networks:
+     - net   
+
+  db:
+    image: mongo
+    ports: 
+     - "27017:27017"
+    networks:
+     - net
+  
+  rabbit:
+    image: rabbitmq
+    ports:
+     - "5672:5672"
+    networks:
+     - net
+  
+networks:
+  net:
